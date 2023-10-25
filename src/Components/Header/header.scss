@@ -1,0 +1,41 @@
+@import "../../index.scss";
+
+header {
+  @include themify($themes) {
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 2rem 1rem;
+    z-index: 1;
+    background-color: themed(main-header-bg-color);
+
+    & h2 {
+      margin-right: auto;
+      text-transform: capitalize;
+      font-weight: 700;
+      color: themed(main-header-text-color);
+    }
+
+    & button {
+      border: none;
+      outline: none;
+      background-color: rgba(99, 95, 199, 1);
+      padding: 0.8rem;
+      border-radius: 100vw;
+      text-transform: capitalize;
+      color: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    & button:hover {
+      background-color: rgba(99, 95, 199, 0.5);
+    }
+  }
+}

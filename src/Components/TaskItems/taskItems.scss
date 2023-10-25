@@ -1,0 +1,42 @@
+@import "../../index.scss";
+
+.task {
+  @include themify($themes) {
+    color: themed(text-primary);
+    &_header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & h2 {
+        font-size: 18px;
+        line-height: 28.8px;
+      }
+    }
+
+    &_subTask {
+      display: flex;
+      gap: 15px;
+      padding: 16px;
+      font-size: 15.04px;
+      line-height: 24.064px;
+      font-weight: 700;
+      border-radius: 5px;
+      margin-top: 8px;
+      background-color: themed(main-bg-color);
+
+      & p.completed {
+        text-decoration: line-through;
+        color: themed(side-text-color);
+      }
+    }
+
+    & select {
+      width: 100%;
+      padding: 16px;
+      border-radius: 5px;
+      border: 1px solid themed(input-border-color);
+      margin-top: 2px;
+    }
+  }
+}

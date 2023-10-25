@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap");
+
+@import "./styles/reset.scss";
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+// Break Points
+
+@mixin media-query($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: 640px) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  } @else {
+    // Default styles for mobile (no media query)
+    @content;
+  }
+}
+
+
+// Color Palette
+$themes: (
+  light: (
+    // side bar
+    side-text-color: #828fa3,
+    side-text-bg-color: #ffffff,
+    side-text-hover-color: #635fc7,
+    side-text-bg-hover-color: rgba(99, 95, 199, 0.1),
+    side-text-active-color: #ffffff,
+    side-text-bg-active-color: #635fc7,
+    side-bg-color: #ffffff,
+
+    // Main board
+    main-header-bg-color: #ffffff,
+    main-header-text-color: #000000,
+    main-bg-color: #f4f7fd,
+
+    input-border-color: rgba(130, 143, 163, 0.25),
+    text-primary: #000000,
+  ),
+
+  dark: (
+    side-text-color: #828fa3,
+    side-text-bg-color: #2b2c37,
+    side-text-hover-color: #635fc7,
+    side-text-bg-hover-color: rgba(99, 95, 199, 0.1),
+    side-text-active-color: #ffffff,
+    side-text-bg-active-color: #635fc7,
+    side-bg-color: #2b2c37,
+
+    // Main board
+    main-header-bg-color: #2b2c37,
+    main-header-text-color: #ffffff,
+    main-bg-color: #20212c,
+
+    input-border-color: rgba(130, 143, 163, 0.25),
+    text-primary: #ffffff,
+  ),
+);
+
+
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

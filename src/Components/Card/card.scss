@@ -1,0 +1,39 @@
+@import "../../index.scss";
+
+.card {
+  @include themify($themes) {
+    background-color: themed(side-bg-color);
+    margin: 1rem 0;
+    padding: 0.8rem;
+    border-radius: 10px;
+    cursor: pointer;
+    color: themed(main-header-text-color);
+
+    &__title {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    & p {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: grey;
+    }
+  }
+}
+
+.modal_card {
+  @include themify($themes) {
+    background-color: themed(main-header-bg-color);
+    position: absolute;
+    z-index: 20;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 500px;
+    max-width: 90vw;
+  }
+}

@@ -1,0 +1,18 @@
+@import "./index.scss";
+
+.app {
+  @include media-query(lg) {
+    display: flex;
+  }
+  & .modal {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & .task_modal {
+    position: absolute;
+    display: flex;
+  }
+}

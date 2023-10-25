@@ -1,0 +1,34 @@
+@import '../../index.scss';
+
+
+.board-modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, .4);
+    position: relative;
+}
+
+.board-modal__form {
+    @include themify($themes) {
+        & input {
+            display: block;
+            border: 1px solid black;
+        }
+    }
+
+}
+
+@keyframes animation {
+    0% {
+        transform: translateY(80%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(-50%);
+        opacity: 1;
+    }
+}
