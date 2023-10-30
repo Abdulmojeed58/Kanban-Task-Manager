@@ -65,7 +65,7 @@ aside {
 
 .board-lists li, .new-board, .toggle-side-bar {
     list-style: none;
-    /* background-color: #635fc7; */
+    // background-color: #635fc7;
     /* margin: 0 2rem 0 0; */
     border-top-right-radius: 100vw;
     border-bottom-right-radius: 100vw;
@@ -110,10 +110,16 @@ aside {
 
 .toggle-box {
     width: 50px;
-    height: 25px;
-    border-radius: 100vw;
-    background-color: rgb(99, 95, 199);
+    height: 30px;
+    border-radius: 100vh;
+    outline: none;
+    border: none;
+    padding: 3px;
+    cursor: pointer;
     position: relative;
+    background-color: rgb(99, 95, 199);
+    transition: all 0.2s linear;
+
 }
 
 .toggle-box:hover {
@@ -122,21 +128,17 @@ aside {
 }
 
 .toggle-btn {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: none;
-    outline: none;
-    color: white;
-    position: absolute;
-    top: 50%;
-    /* left: 2px; */
-    transform: translate(2px, -50%);
-    transition: all .2s linear;
+    display: block;
+      height: 100%;
+      width: 50%;
+      border-radius: 50%;
+      background-color: white;
+      transform: translateX(100%);
+      transition: all 0.2s linear;
 }
 
 .dark-mode {
-    transform: translate(130%, -50%);
+    transform: translateX(0%);
 }
 
 .toggle-side-bar {

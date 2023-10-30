@@ -1,34 +1,56 @@
-@import '../../index.scss';
-
+@import "../../index.scss";
 
 .board-modal {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    background-color: rgba(0, 0, 0, .4);
-    position: relative;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: relative;
 }
 
 .board-modal__form {
-    @include themify($themes) {
-        & input {
-            display: block;
-            border: 1px solid black;
-        }
+  @include themify($themes) {
+    & input {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      border: 1px solid black;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid themed(input-border-color);
+      padding: 8px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      font-size: 15.04px;
+      line-height: 24.064px;
     }
 
+    & label {
+      color: themed(side-text-color);
+      font-size: 12px;
+      line-height: 19.2px;
+      font-weight: 700;
+    }
+
+    & h3 {
+      color: themed(text-primary);
+      font-size: 16px;
+      line-height: 19.2px;
+      font-weight: 700;
+    }
+  }
 }
 
 @keyframes animation {
-    0% {
-        transform: translateY(80%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(-50%);
-        opacity: 1;
-    }
+  0% {
+    transform: translateY(80%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-50%);
+    opacity: 1;
+  }
 }

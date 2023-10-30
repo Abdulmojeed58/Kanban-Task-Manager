@@ -18,15 +18,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { boardActions } from "../../redux/boardSlice";
 import React from "react";
 
-const SideBar = ({ toggleTheme }) => {
-  console.log('Side bar')
+const SideBar = ({ toggleTheme, theme }) => {
   const dispatch = useDispatch();
   const { boards, activeId } = useSelector((state) => state.task);
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
-  const { toggleCreateNewBoard, boardLists, setActiveBoard, activeBoard } =
-    useGlobalContext();
+  const {
+    isSidebarOpen,
+    handleIsSidebarOpen,
+    toggleCreateNewBoard,
+    boardLists,
+    setActiveBoard,
+    activeBoard,
+  } = useGlobalContext();
 
   const [listCount, setListCount] = useState(0);
 
@@ -55,8 +58,8 @@ const SideBar = ({ toggleTheme }) => {
   return (
     <>
       <div
-        className="side-bar-overlay"
-        onClick={() => setIsSidebarOpen((prev) => !prev)}
+        className={`${isSidebarOpen ? "side-bar-overlay" : ""}`}
+        onClick={handleIsSidebarOpen}
       />
       <aside className={`${isSidebarOpen ? "" : "not-active"}`}>
         <div>
@@ -85,11 +88,12 @@ const SideBar = ({ toggleTheme }) => {
           <div className="toggle-light-dark">
             <IconContext.Provider value={{ color: "#828fa3", size: "1.5em" }}>
               <BsFillSunFill />
-              <div className="toggle-box">
+              <div className="toggle-box" role="button" onClick={toggleTheme}>
                 <button
                   type="button"
-                  className="toggle-btn dark-mode"
-                  onClick={toggleTheme}
+                  className={`toggle-btn ${
+                    theme === "light" ? "" : "dark-mode"
+                  }`}
                 ></button>
               </div>
               <BsFillMoonStarsFill />
@@ -99,7 +103,7 @@ const SideBar = ({ toggleTheme }) => {
           <div
             role="button"
             className="toggle-side-bar"
-            onClick={() => setIsSidebarOpen((prev) => !prev)}
+            onClick={handleIsSidebarOpen}
           >
             <FiEyeOff />
             <h2>hide sidebar</h2>

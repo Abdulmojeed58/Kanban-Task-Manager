@@ -68,7 +68,7 @@ function App() {
       <div className="modal">
         <AnimatePresence>{isNewTask && <TaskForm />}</AnimatePresence>
       </div>
-      <SideBar toggleTheme={handleToggleTheme} />
+      <SideBar toggleTheme={handleToggleTheme} theme={theme} />
       <Main />
     </div>
   );

@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { boardActions } from "../../redux/boardSlice";
 
 const TaskForm = () => {
-    console.log('Task form')
   const [inputValues, setInputValues] = useState([""]);
   const { activeColumn } = useSelector((state) => state.task);
   const [currentStatusId, setCurrentStatusId] = useState(null);
